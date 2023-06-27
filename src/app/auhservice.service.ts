@@ -5,8 +5,8 @@ import { LoginUsersService } from './login-users.service';
 })
 export class AuthService {
   router: any;
-  constructor(private userService: LoginUsersService){}
   returnStatus : {errorMessage: string, isAuthenticated: boolean};
+  constructor(private userService: LoginUsersService){}header
 
   login(email: string, password: string){
     this.userService.validateCredentials(email, password)
