@@ -1,0 +1,26 @@
+.login-container {
+  position: relative;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/Getronics-cloud-storage-solution_2.jpg');
+  background-size: cover;
+  filter: opacity(1);
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+
+.form-container {
+  background-color: white;
+  margin: 5% 5% auto;
+  padding: 5% 3% 12% 3%;
+}
+
+.error .primaryEmail {
+  border-color: red;
+}

@@ -1,0 +1,111 @@
+<div class="register-containerc col-md-12">
+    <!-- Background image class-->
+    <div class="col-md-12 ">
+        <div class="background-image"></div>
+    </div>
+    <!-- this div contains whole form-->
+    <div class="col-md-4 form-container">
+        <div style="text-align: justify;">
+        <form [formGroup]="registerForm">
+            <div class="col-md-12">
+                <div class="col-md-12" style="align-items: center; text-align: center;
+                display: flex; flex-direction: column; padding-bottom: 4%;">
+                    <div class="col-md-8">
+                        <h2 style="font-weight: bolder;">SIGN UP</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label style="float: left;">First name: </label>
+                    <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                            <input type="text" id="firstName" formControlName="firstName" required
+                            class="form-control" placeholder="First name" 
+                            style="box-sizing: content-box; "/>
+                    </div>
+                    <div *ngIf="(registerForm.get('firstName').invalid && registerForm.get('firstName').touched) || registerForm.get('firstName').dirty">
+                        <div *ngIf="registerForm.get('firstName').errors?.required" class="text-danger">Please enter first name</div>
+                    </div> 
+                </div>
+                <div class="col-md-6" >
+                    <label style="float: left;">Last name: </label>
+                    <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                        <input type="text" id="lastName" formControlName="lastName" required
+                        class="form-control" placeholder="Last name" 
+                        style="box-sizing: content-box; "/>
+                    </div>
+                    <div *ngIf="(registerForm.get('lastName').invalid && registerForm.get('lastName').touched) || registerForm.get('lastName').dirty">
+                        <div *ngIf="registerForm.get('lastName').errors?.required" class="text-danger">Please enter last name</div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top: 1%;">
+                    <label style="float: left;">Email address: </label>
+                    <div class="col-md-12 row form-outline mb-4" style="display: contents; ">
+                        <input [class.is-invalid] = "registerForm.get('email').invalid && registerForm.get('email').touched"
+                        type="email" class="form-control" formControlName="email" required
+                        placeholder="Email address" style="box-sizing: content-box;" />
+                    </div>
+                    <div *ngIf="(registerForm.get('email').invalid && registerForm.get('email').touched) || registerForm.get('email').dirty">
+                        <label *ngIf="registerForm.get('email').hasError('required')" class="text-danger">Email address is required</label>
+                        <label *ngIf="registerForm.get('email').hasError('pattern')" class="text-danger">Please provide a valid email address</label>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top: 1%;">
+                    <label style="float: left;" for="dob">Date of Birth</label>
+                    <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                        <input type="date" id="dateOfBirth" formControlName="dateOfBirth" required
+                        class="form-control" placeholder="Last name"
+                        style="box-sizing: content-box; "/>
+                    </div>
+                    <div *ngIf="(registerForm.get('dateOfBirth').invalid && registerForm.get('dateOfBirth').touched) || registerForm.get('dateOfBirth').dirty">
+                        <div *ngIf="registerForm.get('dateOfBirth').errors?.required" class="text-danger">Please select date of birth from the calendar</div>
+                        <div *ngIf="registerForm.get('dateOfBirth').errors?.invalidDateOfBirth" class="text-danger">Date of birth cannot be more than current date</div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top: 1%;">
+                    <label style="float: left;">Phone number: </label>
+                    <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                        <input type="text" id="phoneNumber" formControlName="phoneNumber" required
+                        class="form-control" placeholder="Phone number" maxlength="10"
+                        style="box-sizing: content-box; "/>
+                    </div>
+                    <div *ngIf="(registerForm.get('phoneNumber').invalid && registerForm.get('phoneNumber').touched) || registerForm.get('phoneNumber').dirty">
+                        <div *ngIf="registerForm.get('phoneNumber').errors?.required" class="text-danger">Phone number is required</div>
+                        <div *ngIf="registerForm.get('phoneNumber').errors?.pattern" class="text-danger">Invalid phone number</div>  
+                    </div>                
+                </div>
+                    
+                    <div class="col-md-6" style="margin-top: 1%;">
+                            <label style="float: left;">Password: </label>
+                        <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                            <input type="password" id="passwordValue" formControlName="password" required
+                            class="form-control" placeholder="Password" 
+                            style="box-sizing: content-box; "/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" style="margin-top: 1%;">
+                        <label style="float: left;">Confirm password: </label>
+                        <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                            <input type="password" id="confirmPassword" formControlName="confirmPassword" required
+                            class="form-control" placeholder="Confirm password" 
+                            style="box-sizing: content-box;"
+                            [ngClass]="{
+                                'invalid-input': registerForm.get('confirmPassword').errors?.passwordMismatch,
+                                'valid-input': registerForm.get('confirmPassword').valid}"/>
+                            <div *ngIf="registerForm.get('confirmPassword').errors?.passwordMismatch" class="text-danger">Passwords do not match</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="align-items: center;margin-top: 8%;
+                    display: flex; flex-direction: column;">
+                        <div class="col-md-5">
+                            <button type="button" (click)="signIn()"
+                            class="btn btn-primary btn-block mb-4" 
+                            style="background-color: green;"><h5>Sign up</h5></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--                            [disabled]="registerForm.invalid || registerForm.pending"
+-->

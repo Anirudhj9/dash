@@ -1,0 +1,9 @@
+<div *ngIf="isAuthenticated">
+    <!-- Content for authenticated users -->
+    <h2>Welcome to the Home Page!</h2>
+    <!-- Rest of the content -->
+  </div>
+  <div *ngIf="!isAuthenticated">
+    <!-- Content for unauthenticated users (e.g., a login prompt or a message) -->
+    <h2>Please log in to access the Home Page.</h2>
+  </div>

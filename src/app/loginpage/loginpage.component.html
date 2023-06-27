@@ -1,0 +1,57 @@
+<div class="login-containerc col-md-12">
+    <!-- Background image class-->
+    <div class="col-md-12 ">
+        <div class="background-image"></div>
+    </div>
+    <!-- this div contains whole form-->
+    <div class="col-md-7 form-container">
+        <div style="text-align: center;">
+            <form [formGroup]="loginForm">
+                <div class="col-md-12">
+                    <div class="col-md-12" style="align-items: center; 
+                    display: flex; flex-direction: column; padding-bottom: 4%; margin-top: 5%;">
+                        <div class="col-md-5">
+                            <h1 style="font-weight: bolder;">LOGIN</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div *ngIf="(loginForm.get('email').invalid && loginForm.get('email').touched) || loginForm.get('email').dirty">
+                                <label *ngIf="loginForm.get('email').hasError('required')" class="text-danger">Email address is required</label><br>
+                                <label *ngIf="loginForm.get('email').hasError('email')" class="text-danger">Please provide a valid email address</label><br>
+                                <label *ngIf="errorMessage" class="text-danger">Incorrect email address or password</label><BR>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                                <label style="float: left;">Email address: </label>
+                            <div class="col-md-12 row form-outline mb-4" style="display: contents; ">
+                                <input [class.is-invalid] = "loginForm.get('email').invalid && loginForm.get('email').touched"
+                                type="email" class="form-control" formControlName="email" required
+                                placeholder="Email address" style="box-sizing: content-box;" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12" style="margin-top: 2%;">
+                                <label style="float: left;">Password: </label>
+                            <div class="col-md-12 form-outline mb-4"style="display: contents; ">
+                                <input type="password" id="passwordValue" formControlName="password" required
+                                class="form-control" placeholder="Password" 
+                                style="box-sizing: content-box; "/>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="align-items: center;margin-top: 8%;
+                        display: flex; flex-direction: column;">
+                            <div class="col-md-5">
+                                <button type="button" (click)="signIn()"
+                                class="btn btn-primary btn-block mb-4" 
+                                style="background-color: green;"><h5>Sign in</h5></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+   </div>
+</div>
+  
